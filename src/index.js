@@ -6,6 +6,7 @@ const DEBOUNCE_DELAY = 300;
 const boxEl = document.querySelector('#search-box');
 const listEl = document.querySelector('.country-list');
 const infoEl = document.querySelector('.country-info');
+
 function makeInner() {
   listEl.innerHTML = '';
   infoEl.innerHTML = '';
@@ -16,7 +17,6 @@ const handleSearchCountry = event => {
   makeInner();
   if (valueInput === '') {
     return ;
-    // return (listEl.innerHTML = ''), (infoEl.innerHTML = '');
   }
   fetchCountries(valueInput)
     .then(makeCountry)
@@ -30,8 +30,6 @@ const debounceFunction = debounce(handleSearchCountry, DEBOUNCE_DELAY);
 boxEl.addEventListener('input', debounceFunction);
 
 function makeCountry(data) {
-  // listEl.innerHTML = '';
-  // infoEl.innerHTML = '';
   if (data.length >= 10) {
     Notiflix.Notify.info(
       'Too many matches found. Please enter a more specific name.'
